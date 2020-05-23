@@ -277,7 +277,7 @@ describe('Staticman interface', () => {
 
       const data = mockHelpers.getFields()
 
-      return staticman._requireHttps(data).then(extendedData => {
+      return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
     })
@@ -292,7 +292,7 @@ describe('Staticman interface', () => {
       const data = mockHelpers.getFields()
       data.url = 'http://www.example.com'
 
-      return staticman._requireHttps(data).catch(err => {
+      return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
           _smErrorCode: 'Website URL must be https.'
         })
@@ -309,7 +309,7 @@ describe('Staticman interface', () => {
       const data = mockHelpers.getFields()
       data.url = ''
 
-      return staticman._requireHttps(data).then(extendedData => {
+      return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
     })
@@ -324,7 +324,7 @@ describe('Staticman interface', () => {
       const data = mockHelpers.getFields()
       data.url = null
 
-      return staticman._requireHttps(data).then(extendedData => {
+      return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
     })
@@ -339,7 +339,7 @@ describe('Staticman interface', () => {
       const data = mockHelpers.getFields()
       delete data.url
 
-      return staticman._requireHttps(data).then(extendedData => {
+      return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
     })
