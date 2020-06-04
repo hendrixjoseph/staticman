@@ -130,7 +130,7 @@ describe('Staticman plugins', () => {
       })
     })
 
-    test('message has non english letters - fail', () => {
+    test('short message has non english letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
@@ -139,6 +139,91 @@ describe('Staticman plugins', () => {
 
       const data = mockHelpers.getFields()
       data.message = 'これは英語ではありません'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'No latin letters detected.'
+        })
+      })
+    })
+    
+    test('long message has Cyrillic letters - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = 'Лорем ипсум долор сит амет, те при ипсум солет промпта. Ех хабео еффициенди сеа. Ех солум дицтас молестие мел, иус лорем диссентиас ад? Велит еирмод вел еи? Поссит патриояуе мел ат, мелиоре яуалисяуе цу яуо. Дицо пробо цотидиеяуе нам ут, еам ад мунере лаборес. Some English.'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'No latin letters detected.'
+        })
+      })
+    })
+    
+     test('long message has Greek letters - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = 'Λορεμ ιπσθμ δολορ σιτ αμετ, cθμ ιθστο ομνεσ σολετ θτ, εριπθιτ περφεcτο νεγλεγεντθρ vιμ αν? Ιδ σολεατ διcερετ εθμ, αδ δεβετ γραεcι εξπετενδα εαμ, εθ νθσqθαμ αδιπισcινγ εθμ. Vιμ ιν εσσε ταcιματεσ, μεα μοδο οπορτεατ τε! Ομνιθμ λαβοραμθσ vιμ εξ, vιξ ταλε ρεcθσαβο vιτθπερατα εα! Εξ αεqθε ηαρθμ πετεντιθμ vιμ, γραεcισ περcιπιτ cθμ εθ. Εστ qθανδο σεντεντιαε σιγνιφερθμqθε αν, απειριαν λαβοραμθσ περcιπιτθρ ιδ. Some English.'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'No latin letters detected.'
+        })
+      })
+    })
+    
+    test('long message has Chinese letters - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = '告棋丈玲季各手均表刊座暴読季考疑明頭供。予禁毎著年売捕禁拳延蔵滞地問松政面経。災関興組者国村語景情成毎返能出稿人皆田金。育係日打逃員賀曽投昭貝政化田佐津暮施百江。摘得管毎報上禁笑作浮位馬子持勝朝能保袋。録文釈経細不談家集収階紙賀見禁図例。伝都友慶退紙出念局昔保半回信戦方負減同。明乗目同基意座房人要写志。 Some English.'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'No latin letters detected.'
+        })
+      })
+    })
+    
+    test('long message has Japanese letters - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = '負じドン変56毎ア金条ッるきて投西送ムヤヨエ死必ねスづン協宅解タフ心公セナ女85圧渉ヘホヤカ道6高ヒヲ主有竹フ審転み段交なぜイ低置モ治短致哲わフすッ。姿よのけ障院6龍支ヒラル得展もせ料59派ホヱ支協ルきて重面レコフ質係ゃレ以味せ校論用乱タオ藤談ラさ夏旅タ次多チコ題技福推知てひづ。 Some English.'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'No latin letters detected.'
+        })
+      })
+    })
+    
+    test('long message has Arabic letters - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = 'وفي قد جديدة الصين. أم كلّ الشتاء استبدال, عدد جديداً والنفيس بالسيطرة إذ. ذات لكون أخرى وإعلان بل, بين ميناء المارق الصفحة هو, عن بحق هناك واعتلاء. أن اعتداء حاملات عرض, تم لمّ أوراقهم الأوروبية. مارد والتي لها من, ذات هنا؟ التبرعات الأبرياء لم. Some English.'
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
