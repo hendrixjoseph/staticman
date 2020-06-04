@@ -112,6 +112,36 @@ describe('Staticman plugins', () => {
         expect(extendedData).toEqual(data)
       })
 	})
+    
+    test('short message has latin characters - pass', () => {
+	  const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = 'Short'
+
+      return staticman._plugins.processEntry(data).then(extendedData => {
+        expect(extendedData).toEqual(data)
+      })
+	})
+    
+    test('long message has latin characters - pass', () => {
+	  const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message = 'Lorem ipsum dolor sit amet, ea suas reque mel! Pro eligendi salutatus an, facilis conceptam neglegentur ad vix. No has utamur scribentur, ad graecis molestiae mea. His ut propriae conceptam, id errem causae delicata ius? An diam consul praesent per. Purto definiebas vituperatoribus at per, per sonet democritum ei, mei id magna nullam pericula.'
+
+      return staticman._plugins.processEntry(data).then(extendedData => {
+        expect(extendedData).toEqual(data)
+      })
+	})
 
 	test('message is only numbers - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
