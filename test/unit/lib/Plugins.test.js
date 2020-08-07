@@ -262,4 +262,23 @@ describe('Staticman plugins', () => {
       })
     })
   })
+
+  describe('banned urls', () => {
+      test('url "https://cutt.us/freeass" is banned - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.url = 'https://cutt.us/freeass'
+
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'Banned domain.'
+        })
+      })
+    })
+  })
 })
