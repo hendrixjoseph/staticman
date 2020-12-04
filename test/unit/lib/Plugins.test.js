@@ -33,7 +33,7 @@ describe('Staticman plugins', () => {
       return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
-    })
+    }),
 
     test('url is http - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
@@ -50,7 +50,7 @@ describe('Staticman plugins', () => {
           _smErrorCode: 'Website URL must be https.'
         })
       })
-    })
+    }),
 
     test('url is blank - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
@@ -65,7 +65,7 @@ describe('Staticman plugins', () => {
       return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
-    })
+    }),
 
     test('url is null - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
@@ -80,7 +80,7 @@ describe('Staticman plugins', () => {
       return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
-    })
+    }),
 
     test('url is not present - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
@@ -96,11 +96,11 @@ describe('Staticman plugins', () => {
         expect(extendedData).toEqual(data)
       })
     })
-  })
+  }),
 
   describe('require english', () => {
-	test('message has latin characters - pass', () => {
-	  const Staticman = require('./../../../lib/Staticman')
+    test('message has latin characters - pass', () => {
+      const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
       mockConfig.set('transforms', undefined)
@@ -111,25 +111,25 @@ describe('Staticman plugins', () => {
       return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
-	})
-    
-    test('short message has latin characters - pass', () => {
-	  const Staticman = require('./../../../lib/Staticman')
+    }),
+
+    test('short message is in english - pass', () => {
+      const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
       mockConfig.set('transforms', undefined)
       staticman.siteConfig = mockConfig
 
       const data = mockHelpers.getFields()
-      data.message = 'Short'
+      data.message = 'this is something in english'
 
       return staticman._plugins.processEntry(data).then(extendedData => {
         expect(extendedData).toEqual(data)
       })
-	})
-    
-    test('long message has latin characters - pass', () => {
-	  const Staticman = require('./../../../lib/Staticman')
+    }),
+
+    test('long message is in latin - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
       mockConfig.set('transforms', undefined)
@@ -138,12 +138,14 @@ describe('Staticman plugins', () => {
       const data = mockHelpers.getFields()
       data.message = 'Lorem ipsum dolor sit amet, ea suas reque mel! Pro eligendi salutatus an, facilis conceptam neglegentur ad vix. No has utamur scribentur, ad graecis molestiae mea. His ut propriae conceptam, id errem causae delicata ius? An diam consul praesent per. Purto definiebas vituperatoribus at per, per sonet democritum ei, mei id magna nullam pericula.'
 
-      return staticman._plugins.processEntry(data).then(extendedData => {
-        expect(extendedData).toEqual(data)
+      return staticman._plugins.processEntry(data).catch(err => {
+        expect(err).toEqual({
+          _smErrorCode: 'english only'
+        })
       })
-	})
+    }),
 
-	test('message is only numbers - fail', () => {
+    test('message is only numbers - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
@@ -155,12 +157,12 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
+    }),
 
-    test('short message has non english letters - fail', () => {
+    test('short message has non english letters "これは英語ではありません" - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
@@ -172,11 +174,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
-    
+    }),
+
     test('long message has Cyrillic letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -189,11 +191,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
-    
+    }),
+
      test('long message has Greek letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -206,11 +208,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
-    
+    }),
+
     test('long message has Chinese letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -223,11 +225,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
-    
+    }),
+
     test('long message has Japanese letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -240,11 +242,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
-    })
-    
+    }),
+
     test('long message has Arabic letters - fail', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -257,11 +259,11 @@ describe('Staticman plugins', () => {
 
       return staticman._plugins.processEntry(data).catch(err => {
         expect(err).toEqual({
-          _smErrorCode: 'No latin letters detected.'
+          _smErrorCode: 'english only'
         })
       })
     })
-  })
+  }),
 
   describe('banned urls', () => {
       test('url "https://cutt.us/freeass" is banned - fail', () => {
