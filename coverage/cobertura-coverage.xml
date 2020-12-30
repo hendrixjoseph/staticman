@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="815" lines-covered="715" line-rate="0.8773000000000001" branches-valid="371" branches-covered="289" branch-rate="0.779" timestamp="1607046088178" complexity="0" version="0.1">
+<coverage lines-valid="817" lines-covered="717" line-rate="0.8776" branches-valid="371" branches-covered="289" branch-rate="0.779" timestamp="1609361198348" complexity="0" version="0.1">
   <sources>
     <source>C:\Users\hendr\git\my-staticman</source>
   </sources>
@@ -191,34 +191,34 @@
           <methods>
             <method name="(anonymous_0)" hits="16" signature="()V">
               <lines>
-                <line number="189" hits="16"/>
+                <line number="194" hits="16"/>
               </lines>
             </method>
             <method name="(anonymous_1)" hits="112" signature="()V">
               <lines>
-                <line number="192" hits="112"/>
+                <line number="197" hits="112"/>
               </lines>
             </method>
             <method name="(anonymous_2)" hits="91" signature="()V">
               <lines>
-                <line number="193" hits="91"/>
+                <line number="198" hits="91"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="3" hits="101" branch="false"/>
             <line number="5" hits="101" branch="false"/>
-            <line number="189" hits="101" branch="false"/>
-            <line number="190" hits="16" branch="false"/>
-            <line number="192" hits="112" branch="false"/>
-            <line number="194" hits="91" branch="false"/>
-            <line number="198" hits="16" branch="false"/>
-            <line number="200" hits="16" branch="false"/>
-            <line number="201" hits="16" branch="false"/>
-            <line number="202" hits="16" branch="false"/>
-            <line number="204" hits="16" branch="false"/>
-            <line number="206" hits="0" branch="false"/>
-            <line number="210" hits="101" branch="false"/>
+            <line number="194" hits="101" branch="false"/>
+            <line number="195" hits="16" branch="false"/>
+            <line number="197" hits="112" branch="false"/>
+            <line number="199" hits="91" branch="false"/>
+            <line number="203" hits="16" branch="false"/>
+            <line number="205" hits="16" branch="false"/>
+            <line number="206" hits="16" branch="false"/>
+            <line number="207" hits="16" branch="false"/>
+            <line number="209" hits="16" branch="false"/>
+            <line number="211" hits="0" branch="false"/>
+            <line number="215" hits="101" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -571,7 +571,7 @@
         </class>
       </classes>
     </package>
-    <package name="my-staticman.lib" line-rate="0.8598" branch-rate="0.7704000000000001">
+    <package name="my-staticman.lib" line-rate="0.8603000000000001" branch-rate="0.7704000000000001">
       <classes>
         <class name="ErrorHandler.js" filename="lib\ErrorHandler.js" line-rate="0.8158" branch-rate="0.8">
           <methods>
@@ -1243,34 +1243,39 @@
                 <line number="28" hits="11"/>
               </lines>
             </method>
-            <method name="(anonymous_3)" hits="15" signature="()V">
+            <method name="(anonymous_3)" hits="21" signature="()V">
               <lines>
-                <line number="36" hits="15"/>
+                <line number="35" hits="21"/>
               </lines>
             </method>
-            <method name="(anonymous_4)" hits="11" signature="()V">
+            <method name="(anonymous_4)" hits="15" signature="()V">
               <lines>
-                <line number="42" hits="11"/>
+                <line number="44" hits="15"/>
               </lines>
             </method>
-            <method name="(anonymous_5)" hits="10" signature="()V">
+            <method name="(anonymous_5)" hits="11" signature="()V">
               <lines>
-                <line number="43" hits="10"/>
+                <line number="50" hits="11"/>
               </lines>
             </method>
-            <method name="(anonymous_6)" hits="2" signature="()V">
+            <method name="(anonymous_6)" hits="10" signature="()V">
               <lines>
-                <line number="44" hits="2"/>
+                <line number="51" hits="10"/>
               </lines>
             </method>
-            <method name="(anonymous_7)" hits="23" signature="()V">
+            <method name="(anonymous_7)" hits="2" signature="()V">
               <lines>
-                <line number="47" hits="23"/>
+                <line number="52" hits="2"/>
               </lines>
             </method>
-            <method name="(anonymous_8)" hits="15" signature="()V">
+            <method name="(anonymous_8)" hits="23" signature="()V">
               <lines>
-                <line number="48" hits="15"/>
+                <line number="55" hits="23"/>
+              </lines>
+            </method>
+            <method name="(anonymous_9)" hits="15" signature="()V">
+              <lines>
+                <line number="56" hits="15"/>
               </lines>
             </method>
           </methods>
@@ -1289,18 +1294,20 @@
             <line number="22" hits="15" branch="false"/>
             <line number="24" hits="8" branch="false"/>
             <line number="28" hits="93" branch="false"/>
-            <line number="29" hits="11" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="30" hits="1" branch="false"/>
-            <line number="32" hits="10" branch="false"/>
-            <line number="36" hits="93" branch="false"/>
-            <line number="37" hits="15" branch="false"/>
-            <line number="39" hits="15" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="41" hits="12" branch="false"/>
-            <line number="42" hits="11" branch="false"/>
-            <line number="43" hits="10" branch="false"/>
-            <line number="44" hits="2" branch="false"/>
-            <line number="47" hits="93" branch="false"/>
-            <line number="48" hits="23" branch="false"/>
+            <line number="33" hits="11" branch="false"/>
+            <line number="35" hits="21" branch="false"/>
+            <line number="37" hits="11" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="40" hits="10" branch="false"/>
+            <line number="44" hits="93" branch="false"/>
+            <line number="45" hits="15" branch="false"/>
+            <line number="47" hits="15" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="49" hits="12" branch="false"/>
+            <line number="50" hits="11" branch="false"/>
+            <line number="51" hits="10" branch="false"/>
+            <line number="52" hits="2" branch="false"/>
+            <line number="55" hits="93" branch="false"/>
+            <line number="56" hits="23" branch="false"/>
           </lines>
         </class>
         <class name="RSA.js" filename="lib\RSA.js" line-rate="0.9286" branch-rate="1">

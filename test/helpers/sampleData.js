@@ -16,6 +16,8 @@ comments:
   auth:
     required: false
 
+  bannedDomains: ["https://cutt.us/freeass", "https://bit.ly"]
+
   # (*) REQUIRED
   #
   # Name of the branch being used. Must match the one sent in the URL of the
