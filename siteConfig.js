@@ -48,6 +48,11 @@ const schema = {
       default: false
     }
   },
+  bannedDomains: {
+    doc: 'List of URLS that are banned.',
+    format: String,
+    default: 'master'
+  },
   branch: {
     doc: 'Name of the branch being used within the GitHub repository.',
     format: String,
