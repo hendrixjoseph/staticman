@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="817" lines-covered="717" line-rate="0.8776" branches-valid="371" branches-covered="289" branch-rate="0.779" timestamp="1609439773490" complexity="0" version="0.1">
+<coverage lines-valid="817" lines-covered="717" line-rate="0.8776" branches-valid="371" branches-covered="289" branch-rate="0.779" timestamp="1609440089827" complexity="0" version="0.1">
   <sources>
     <source>C:\Users\hendr\git\my-staticman</source>
   </sources>
@@ -1185,9 +1185,9 @@
                 <line number="7" hits="5"/>
               </lines>
             </method>
-            <method name="(anonymous_1)" hits="4" signature="()V">
+            <method name="(anonymous_1)" hits="3" signature="()V">
               <lines>
-                <line number="22" hits="4"/>
+                <line number="22" hits="3"/>
               </lines>
             </method>
             <method name="(anonymous_2)" hits="1" signature="()V">
@@ -1200,9 +1200,9 @@
                 <line number="26" hits="4"/>
               </lines>
             </method>
-            <method name="(anonymous_4)" hits="3" signature="()V">
+            <method name="(anonymous_4)" hits="2" signature="()V">
               <lines>
-                <line number="42" hits="3"/>
+                <line number="42" hits="2"/>
               </lines>
             </method>
             <method name="(anonymous_5)" hits="1" signature="()V">
@@ -1217,11 +1217,11 @@
             <line number="5" hits="3" branch="false"/>
             <line number="7" hits="3" branch="false"/>
             <line number="8" hits="5" branch="false"/>
-            <line number="22" hits="4" branch="false"/>
+            <line number="22" hits="3" branch="false"/>
             <line number="23" hits="1" branch="false"/>
             <line number="26" hits="3" branch="false"/>
             <line number="27" hits="4" branch="false"/>
-            <line number="42" hits="3" branch="false"/>
+            <line number="42" hits="2" branch="false"/>
             <line number="43" hits="1" branch="false"/>
             <line number="46" hits="3" branch="false"/>
           </lines>
