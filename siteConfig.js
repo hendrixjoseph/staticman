@@ -50,7 +50,7 @@ const schema = {
   },
   bannedDomains: {
     doc: 'List of URLS that are banned.',
-    format: String,
+    format: Array,
     default: 'master'
   },
   branch: {

@@ -100,7 +100,7 @@ const schema = {
     doc: 'RSA private key to encrypt sensitive configuration parameters with.',
     docExample: 'rsaPrivateKey: "-----BEGIN RSA PRIVATE KEY-----\\nkey\\n-----END RSA PRIVATE KEY-----"',
     format: String,
-    default: null,
+    default: 'hello',
     env: 'RSA_PRIVATE_KEY'
   },
   logging: {
