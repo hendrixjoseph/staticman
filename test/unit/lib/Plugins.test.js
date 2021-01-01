@@ -88,7 +88,7 @@ describe('Staticman plugins', () => {
     })
   }),
 
-  describe('require english', () => {
+  describe.skip('require english', () => {
     test('message has latin characters - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
