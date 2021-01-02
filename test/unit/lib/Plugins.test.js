@@ -88,7 +88,7 @@ describe('Staticman plugins', () => {
     })
   }),
 
-  describe.skip('require english', () => {
+  describe('require english', () => {
     test('message has latin characters - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
@@ -114,7 +114,7 @@ describe('Staticman plugins', () => {
       return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
     }),
 
-    test('long message is in latin - fail', () => {
+    test('long message is in latin - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
@@ -124,13 +124,10 @@ describe('Staticman plugins', () => {
       const data = mockHelpers.getFields()
       data.message = 'Lorem ipsum dolor sit amet, ea suas reque mel! Pro eligendi salutatus an, facilis conceptam neglegentur ad vix. No has utamur scribentur, ad graecis molestiae mea. His ut propriae conceptam, id errem causae delicata ius? An diam consul praesent per. Purto definiebas vituperatoribus at per, per sonet democritum ei, mei id magna nullam pericula.'
 
-      return expect(staticman._plugins.processEntry(data, mockConfig))
-        .rejects.toEqual({
-          _smErrorCode: 'english only'
-        })
+      return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
     }),
 
-    test('message is only numbers - fail', () => {
+    test('message is only numbers - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
       const staticman = new Staticman(mockParameters)
 
@@ -140,10 +137,7 @@ describe('Staticman plugins', () => {
       const data = mockHelpers.getFields()
       data.message = '1234567890'
 
-      return expect(staticman._plugins.processEntry(data, mockConfig))
-        .rejects.toEqual({
-          _smErrorCode: 'english only'
-        })
+      return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
     }),
 
     test('short message has non english letters "これは英語ではありません" - fail', () => {

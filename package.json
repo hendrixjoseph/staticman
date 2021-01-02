@@ -4,7 +4,7 @@
   "description": "Static sites with superpowers",
   "main": "index.js",
   "scripts": {
-    "start": "node --inspect index.js",
+    "start": "node index.js",    
     "test": "jest && node test/utils/coverage.js",
     "test-dev": "TEST_DEV=true jest --watch"
   },
@@ -34,7 +34,6 @@
     "express-recaptcha": "^2.1.0",
     "gitlab": "^3.11.4",
     "js-yaml": "^3.14.1",
-    "languagedetect": "^2.0.0",
     "mailgun-js": "^0.22.0",
     "markdown-table": "^1.1.3",
     "md5": "^2.3.0",
