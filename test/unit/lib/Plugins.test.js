@@ -20,6 +20,64 @@ beforeEach(() => {
 })
 
 describe('Staticman plugins', () => {
+  describe('prevent too many links', () => {
+    test('no links whatsoever - pass', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+
+      return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
+    }),
+
+    test('a couple of links - pass', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message += ' http://www.example.com and https://www.example.com'
+
+      return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
+    }),
+
+    test('a couple of links - pass', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message += ' http://www.example.com and https://www.example.com'
+      return expect(staticman._plugins.processEntry(data, mockConfig)).resolves.toEqual(data)
+    }),
+
+    test('greater than 10 links - fail', () => {
+      const Staticman = require('./../../../lib/Staticman')
+      const staticman = new Staticman(mockParameters)
+
+      mockConfig.set('transforms', undefined)
+      staticman.siteConfig = mockConfig
+
+      const data = mockHelpers.getFields()
+      data.message += ' http://www.example.com and https://www.example.com'
+      data.message += ' http://www.example.com and https://www.example.com'
+      data.message += ' http://www.example.com and https://www.example.com'
+      data.message += ' http://www.example.com and https://www.example.com'
+      data.message += ' http://www.example.com and https://www.example.com'
+      data.message += ' http://www.example.com and https://www.example.com'
+
+      return expect(staticman._plugins.processEntry(data, mockConfig)).rejects.toEqual({
+        _smErrorCode: 'Too many attempted links.'
+      })
+    })
+  }),
   describe('require https', () => {
     test('url is https - pass', () => {
       const Staticman = require('./../../../lib/Staticman')
